@@ -5,6 +5,8 @@ char a[1509],b[29];
 int k,n,ans;
 bool f[26];
 
+// D - Good substrings (codeforces)
+
 struct Trie{
 	Trie* character[CHAR_SIZE];
 	Trie(){
