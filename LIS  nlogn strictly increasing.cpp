@@ -3,6 +3,8 @@ using namespace std;
 int n,a[int(1e5+9)];
 int tail[int(1e5+9)];
 
+// Solution to codeforces div2 D. Bubble Sort Graph (round 198)
+
 int lis_nlogn(int A[],int s){ // s is the size of array A
     // this function finds the lis (strictly increasing)
     if(s==0) return 0;
