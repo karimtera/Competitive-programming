@@ -1,8 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
-string s;
-
-vector<int> computeprefix(string pat){
+vector<int> computeprefix(vector<int> pat){
     int m=pat.size();
     vector<int> longestPrefix(m);
     for(int i=1,k=0;i<m;i++){
@@ -13,17 +9,19 @@ vector<int> computeprefix(string pat){
     return longestPrefix;
 }
 
-bool kmp(string s,string pat){
+int kmp(vector<int> s,vector<int>pat){
     int n=s.size();
     int m=pat.size();
+    int cnt=0;
     vector<int> ans,lp=computeprefix(pat);
-    for(int i=1,k=0;i<n;i++){
+    //for(int u:lp) printf("%d ",u);
+    for(int i=0,k=0;i<n;i++){
         while(k>0&&pat[k]!=s[i]) k=lp[k-1];
         if(pat[k]==s[i]) k++;
         if(k==m){
-            return (i-m+1<n-m);
+            cnt++;
             k=lp[k-1];
         }
     }
-    return 0;
+    return cnt;
 }
