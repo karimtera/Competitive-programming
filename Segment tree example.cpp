@@ -5,6 +5,8 @@ long long k,ans;
 int n,m,stidx[int(2e5+9)],ST;
 void maxi(long long& a,long long b){a=max(a,b);}
 
+//D. R2D2 and Droid Army
+
 long long query(int st,int en,int t){
     st+=ST; en+=ST;
     long long ret=0;
