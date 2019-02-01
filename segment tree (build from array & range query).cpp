@@ -8,6 +8,8 @@ int cs[33][sz];
 int a[sz];
 int mx=(1<<30)-1;
 
+// https://codeforces.com/contest/482/problem/B
+
 void build(int node,int left,int right){
     if(left==right){
         segtree[node]=a[left];
