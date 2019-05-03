@@ -1,20 +1,23 @@
-vector<int> computeprefix(vector<int> pat){
-    int m=pat.size();
-    vector<int> longestPrefix(m);
-    for(int i=1,k=0;i<m;i++){
-        while(k>0&&pat[k]!=pat[i]) k=longestPrefix[k-1];
-        if(pat[k]==pat[i]) longestPrefix[i]=++k;
-        else longestPrefix[i]=k;
+vector<int> prefix_function(string s) {
+    int n=s.size();
+    vector<int> pi(n);
+    for (int i = 1; i < n; i++) {
+        int j = pi[i-1];
+        while (j > 0 && s[i] != s[j])
+            j = pi[j-1];
+        if (s[i] == s[j])
+            j++;
+        pi[i] = j;
     }
-    return longestPrefix;
+    return pi;
 }
 
-int kmp(vector<int> s,vector<int>pat){
+
+int kmp(string s,string pat){
     int n=s.size();
     int m=pat.size();
     int cnt=0;
-    vector<int> ans,lp=computeprefix(pat);
-    //for(int u:lp) printf("%d ",u);
+    vector<int> lp=prefix_function(pat);
     for(int i=0,k=0;i<n;i++){
         while(k>0&&pat[k]!=s[i]) k=lp[k-1];
         if(pat[k]==s[i]) k++;
