@@ -22,7 +22,7 @@ int kmp(string s,string pat){
         while(k>0&&pat[k]!=s[i]) k=lp[k-1];
         if(pat[k]==s[i]) k++;
         if(k==m){
-            cnt++;
+            cnt++; %% found occurance at position i-k
             k=lp[k-1];
         }
     }
