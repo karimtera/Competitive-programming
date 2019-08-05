@@ -13,6 +13,14 @@ int pos[sz];
 int ans[sz];
 int myr[sz],myl;
 
+// based on tutorial: https://www.hackerearth.com/practice/data-structures/advanced-data-structures/segment-trees/tutorial/
+// build: O(n)
+// point update: O(logn)
+// range query: O(logn)
+
+// problem name: C. Sereja and Brackets
+// problem link: https://codeforces.com/contest/380/problem/C
+
 void build(int node,int left,int right){
     if(left==right){
         segtree[node]=cl[left];
@@ -30,14 +38,21 @@ void update(int node,int left,int right,int pos,int v){
         return;
     }
     int mid=(left+right)>>1;
+    // check if the update position is in my left or right child
     if(pos>=left&&pos<=mid) update(2*node,left,mid,pos,v);
     else update(2*node+1,mid+1,right,pos,v);
+    // update my node because one of my children is updated
     segtree[node]=segtree[2*node]+segtree[2*node+1];
 }
 
 int query(int node,int left,int right,int l,int r){
+    // left, right are the node range
+    // l, r are the query range
+    //case 1: node range is all outside the query range
     if(left>r||right<l) return 0;
+    // case 2: node range is all included in the query range
     if(left>=l&&right<=r) return segtree[node];
+    // case 3: node range is partially included in the query range
     int mid=(left+right)>>1;
     int child1=query(2*node,left,mid,l,r);
     int child2=query(2*node+1,mid+1,right,l,r);
