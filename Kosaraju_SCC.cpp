@@ -48,7 +48,6 @@ int main()
         if(!visited[i]) dfs1(i);
     }
     memset(visited,0,sizeof(visited));
-    bool can=0;
     for(int i=myl.size()-1;i>=0;i--){
         int u=myl[i];
         if(visited[u]) continue;
