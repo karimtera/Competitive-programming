@@ -26,24 +26,12 @@ void dfs2(int i){
         dfs2(u);
     }
     // you have a new element in the current scc
-    //ans[i]=char('a'+min(25,cnt));
 }
 
 int main()
 {
     //freopen("in.txt","r",stdin);
     //freopen("out.txt","w",stdout);
-    /*
-    scanf("%d %d",&n,&k);
-    for(int i=0;i<n;i++) scanf("%d",&p[i]);
-    for(int i=0;i<n;i++) scanf("%d",&q[i]);
-    for(int i=0;i<n-1;i++){
-        v[p[i]].push_back(p[i+1]);
-        vr[p[i+1]].push_back(p[i]);
-        v[q[i]].push_back(q[i+1]);
-        vr[q[i+1]].push_back(q[i]);
-    }
-    */
     for(int i=1;i<=n;i++){
         if(!visited[i]) dfs1(i);
     }
@@ -54,12 +42,5 @@ int main()
         dfs2(u);
         cnt++;
     }
-    /*
-    if(k>cnt) puts("NO");
-    else{
-        puts("YES");
-        for(int i=1;i<=n;i++) printf("%c",ans[i]);
-    }
-    */
     return 0;
 }
