@@ -54,6 +54,8 @@ pll range(ll hash[][2],int l,int r){
 	return ret;
 }
 
+
+/*
 string str;
 ll h[sz][2];
 int n;
@@ -69,10 +71,11 @@ bool can(int x){
 	}
 	return 0;
 }
-
+*/
 
 int main(){
 	pre();
+	/*
 	cin>>str;
 	n=str.size();
 	hashit(str,h);
@@ -83,5 +86,6 @@ int main(){
 		}
 	}
   cout<<"Just a legend";
+  */
   return 0;
 }
