@@ -14,78 +14,58 @@ using namespace std;
 typedef long long ll;
 typedef pair<int,int> pii;
 typedef pair<ll,ll> pll;
-const int sz=1e6+9;
+const int sz=1e5+9;
 const ll A=911382323;
 const ll B[2]={972663749,1000000321};
 
-ll p[sz][2];
+pll p[sz];
 
 void pre(){
 	// calcuates the values of A^i mod the 2 Bs
-	p[0][0]=p[0][1]=1;
+	p[0].f=p[0].s=1;
 	for(int i=1;i<sz;i++){
-		p[i][0]=(p[i-1][0]*A)%B[0];
-		p[i][1]=(p[i-1][1]*A)%B[1];
+		p[i].f=(p[i-1].s*A)%B[0];
+		p[i].s=(p[i-1].s*A)%B[1];
 	}
 }
 
-void hashit(string &str,ll hash[][2]){	
+void hashit(string &str,pll hash[]){	
 	// send the string, and the array to fill the hash (2nd dimension is for the 2 Bs)
 	ll val=str[0]-'a'+1;
-	hash[0][0]=hash[0][1]=val;
+	hash[0].f=hash[0].s=val;
 	for(int i=1;i<str.size();i++){
 		val=str[i]-'a'+1;
-		hash[i][0]=(hash[i-1][0]*A+val)%B[0];
-		hash[i][1]=(hash[i-1][1]*A+val)%B[1];
+		hash[i].f=(hash[i-1].f*A+val)%B[0];
+		hash[i].s=(hash[i-1].s*A+val)%B[1];
 	}	
 }
 
-pll range(ll hash[][2],int l,int r){
+pll range(pll hash[],int l,int r){
 	// returns the substring hash value
 	// send the string's hash table, and the indices of the substring
 	pll ret;
 	if(!l){
-		ret.f=hash[r][0];
-		ret.s=hash[r][1];
+		ret.f=hash[r].f;
+		ret.s=hash[r].s;
 		return ret;
 	} 
-	ret.f=((hash[r][0]-hash[l-1][0]*p[r-l+1][0])%B[0]+B[0])%B[0];
-	ret.s=((hash[r][1]-hash[l-1][1]*p[r-l+1][1])%B[1]+B[1])%B[1];
+	ret.f=((hash[r].f-hash[l-1].f*p[r-l+1].f)%B[0]+B[0])%B[0];
+	ret.s=((hash[r].s-hash[l-1].s*p[r-l+1].s)%B[1]+B[1])%B[1];
 	return ret;
 }
 
-
-/*
+int n,k;
+ll ans,a[sz];
 string str;
-ll h[sz][2];
-int n;
-
-bool can(int x){
-	auto pre=range(h,0,x-1);
-	auto suf=range(h,n-x,n-1);
-	if(pre!=suf) return 0;
-	pll tmp;
-	for(int i=1;i<n-x;i++){
-		tmp=range(h,i,i+x-1);
-		if(tmp==pre) return 1;
-	}
-	return 0;
-}
-*/
+pll h[sz],rh[sz],t[sz];
 
 int main(){
 	pre();
-	/*
-	cin>>str;
-	n=str.size();
-	hashit(str,h);
-	for(int i=n-2;i>0;i--){
-		if(can(i)){
-			for(int j=0;j<i;j++) cout<<str[j];
-			return 0;
-		}
-	}
-  cout<<"Just a legend";
-  */
-  return 0;
+	// cin>>k>>n;
+	// for(int i=0;i<k;i++){
+	// 	cin>>str>>a[i];
+	// 	hashit(str,t);
+	// 	h[i]=t[n-1];
+	// }
+	return 0;
 }
