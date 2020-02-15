@@ -10,7 +10,6 @@
 // now query on sum over any range
 
 
-
 //    _____ _     _                _           _     _ _     _     
 //    \_   \ |_  (_)___  __      _| |__   __ _| |_  (_) |_  (_)___ 
 //     / /\/ __| | / __| \ \ /\ / / '_ \ / _` | __| | | __| | / __|
@@ -67,7 +66,7 @@ int query(int node,int l,int r,int ql,int qr,int val){
 	return q1+q2; 
 }
 
-
+/*
 int segtree2[4*sz];
 int b[sz];
 
@@ -95,9 +94,10 @@ int query2(int node,int l,int r,int ql,int qr){
 	return q1+q2;
 }
 
-
+*/
 
 int main(){
+	/*
 	scanf("%d %d",&n,&m);
 	for(int i=1;i<=n;i++) ans[i].f=ans[i].s=i;
 	for(int i=0;i<m;i++){
@@ -105,6 +105,8 @@ int main(){
 		ans[a[i]].f=1;
 		pos[a[i]].pb(i);
 	}
+	*/
+	// prv array
 	for(int i=1;i<=n;i++){
 		int curr=-1;
 		for(auto u:pos[i]){
@@ -114,6 +116,7 @@ int main(){
 		if(pos[i].empty()) em.pb(i);
 	}
 	build(1,0,m-1);
+	/*
 	for(int i=1;i<=n;i++){
 		if(pos[i].empty()) continue;
 		for(int j=0;j+1<pos[i].size();j++){
@@ -141,6 +144,7 @@ int main(){
 		ans[u].s=max(ans[u].s,u+res);
 	}
 	for(int i=1;i<=n;i++) printf("%d %d\n",ans[i].f,ans[i].s);
+	*/
 	return 0;
 }
 
