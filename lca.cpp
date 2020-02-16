@@ -9,9 +9,10 @@ int segtree[12*sz];
 int visited[sz];
 vector<int> v[sz];
 
-// lowest common ancestor using euler paths
+// lowest common ancestor using euler tour
 // o(n) preprocessing
 // o(logn) for queries
+// also can get distance between any two nodes in tree in o(logn) for a query
 
 void dfs(int idx ,int h=0){ // to construct the euler path vector 
     visited[idx]=1;
@@ -56,6 +57,11 @@ int lca(int v1,int v2){ // to get the lca
     int B=first[v2];
     if(A>B) swap(A,B);
     return query(1,0,lst,A,B);
+}
+
+int distance(int v1,int v2){
+	int LCA=lca(v1,v2);
+	return height[v1]+height[v2]-(height[LCA]<<1);
 }
 
 int n,q;
