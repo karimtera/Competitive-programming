@@ -26,11 +26,6 @@ ll div_ceil(ll a, ll b) {
 const int sz=1e6+9;
 
 int main(){
-	int t,a,b;
-	cin>>t;
-	while(t--){
-		cin>>a>>b;
-		cout<<((b-a%b)==b?0:b-a%b)<<'\n';
-	}
+	
 	return 0;
 }
