@@ -52,7 +52,7 @@ int query(int node,int left,int right,int l,int r){
     if(left>r||right<l) return 0;
     // case 2: node range is all included in the query range
     if(left>=l&&right<=r) return segtree[node];
-    // case 3: node range is partially included in the query range
+    // case 3: query range is partially included in the node range
     int mid=(left+right)>>1;
     int child1=query(2*node,left,mid,l,r);
     int child2=query(2*node+1,mid+1,right,l,r);
